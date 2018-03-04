@@ -21,6 +21,24 @@
     }
   </style>
   <script>
+    //clcik event of the Button
+    function makeAPICall() {
+      //get the entered value
+      let input = document.getElementById('ip_txt').value;
+
+      let xhr = new XMLHttpRequest();
+      //make API call from with this as get parameter name
+      xhr.open('GET', `API/data?name=${input}`);
+      xhr.onload = function () {
+        if (xhr.status === 200) { //we have got a Response
+          alert(`Message from Server: ${xhr.responseText}`);
+        }
+        else {
+          alert('Request failed.  Returned status of ' + xhr.status);
+        }
+      };
+      xhr.send();
+    }
 
 
   </script>
@@ -30,7 +48,7 @@
   <div id="topBar">
     Enter Your Name:
     <input type="text" id="ip_txt" value="Ashok Kumar"></input>
-    <input type="button" id="nameSearch" value="Welcome"></input>
+    <input type="button" onclick="makeAPICall();" value="Make Server call"></input>
 
   </div>
   <div id="opDiv"></div>
