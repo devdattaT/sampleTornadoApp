@@ -1,1 +1,1 @@
-web: python main.py
+web: python web_wrapper.py
