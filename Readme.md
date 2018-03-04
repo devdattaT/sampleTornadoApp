@@ -9,4 +9,6 @@ To run this code, run:
 
     python web_wrapper.py
 
+Now open `http://localhost:8111` in your Browser
+
 The code has a `index.html` which makes an Ajax call to the API, sending the name that the user has entered. The service (contained in `web_wrapper.py`) calls a Python file (`WelcomeUser.py`), and sends the name to the function called `sayHello()`
