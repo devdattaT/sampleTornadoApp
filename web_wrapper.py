@@ -2,6 +2,9 @@ import tornado.ioloop
 import tornado.web
 from WelcomeUser import sayHello
 import json
+import os
+
+root = os.path.dirname(__file__)
 
 
 class APIHandler(tornado.web.RequestHandler):
@@ -13,9 +16,10 @@ class APIHandler(tornado.web.RequestHandler):
     self.write(json.dumps(welcomeString))
 
 def make_app():
-    return tornado.web.Application([
-        (r"/API/data", APIHandler)
-    ])
+  return tornado.web.Application([
+      (r"/API/data", APIHandler),
+       (r"/(.*)", tornado.web.StaticFileHandler, {"path": root, "default_filename": "index.html"})
+  ])
 
 if __name__ == "__main__":
     app = make_app()
